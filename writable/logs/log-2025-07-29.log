@@ -1,0 +1,286 @@
+DEBUG - 2025-07-29 11:03:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-29 11:04:15 --> CSRF token verified.
+DEBUG - 2025-07-29 11:04:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 11:04:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:44:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:44:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-29 13:44:56 --> CSRF token verified.
+INFO - 2025-07-29 13:44:56 --> UserModel insert attempt - Data: {"username":"heheheha","email":"heheheha@gmal.com","password":"$2y$10$ohgAG9SJ1PcQzkCjEn4hgefkthcj1b7P8OmMaRaAUYVHO3Yscy6zO","fullname":"heheheha","role":"user","profile_image":"default-profile.jpg","created_at":"2025-07-29 13:44:56","updated_at":"2025-07-29 13:44:56"}
+INFO - 2025-07-29 13:44:56 --> UserModel insert result: success
+DEBUG - 2025-07-29 13:44:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:44:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-29 13:45:05 --> CSRF token verified.
+DEBUG - 2025-07-29 13:45:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:45:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:45:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:45:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:45:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:45:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:52:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:57:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:57:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:58:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:59:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:59:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:59:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:59:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-29 13:59:13 --> ProcessCheckout called - User ID: 10, Payment Method: 2
+INFO - 2025-07-29 13:59:13 --> Creating order - User: 10, Items: 1, Total: 200000
+INFO - 2025-07-29 13:59:13 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-29 13:59:13 --> Order created with ID: 19
+INFO - 2025-07-29 13:59:13 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-29 13:59:13 --> Order creation completed successfully with ID: 19
+INFO - 2025-07-29 13:59:13 --> Order created successfully with ID: 19
+DEBUG - 2025-07-29 13:59:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 13:59:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-29 13:59:30 --> Order 19 completed via payment confirmation by user 10
+DEBUG - 2025-07-29 13:59:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:09:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:09:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-29 14:09:37 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(1061): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->downloadInvoice('19')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-07-29 14:09:37 --> downloadInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-07-29 14:09:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:09:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-29 14:09:42 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(1061): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->downloadInvoice('19')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-07-29 14:09:42 --> downloadInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-07-29 14:09:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:09:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-29 14:09:58 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(1061): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->downloadInvoice('19')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-07-29 14:09:58 --> downloadInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-07-29 14:09:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:10:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:13:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:13:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:13:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-29 14:13:19 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(1061): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->downloadInvoice('19')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-07-29 14:13:19 --> downloadInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-07-29 14:13:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-29 14:13:22 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "href="
+[Method: GET, Route: user/href=]
+in SYSTEMPATH\Router\Router.php on line 741.
+ 1 SYSTEMPATH\Router\Router.php(207): CodeIgniter\Router\Router->checkDisallowedChars('user/href=')
+ 2 SYSTEMPATH\CodeIgniter.php(832): CodeIgniter\Router\Router->handle('user/href=')
+ 3 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\project\\toko_buku\\public\\index.php')
+CRITICAL - 2025-07-29 14:13:42 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "href="
+[Method: GET, Route: user/href=]
+in SYSTEMPATH\Router\Router.php on line 741.
+ 1 SYSTEMPATH\Router\Router.php(207): CodeIgniter\Router\Router->checkDisallowedChars('user/href=')
+ 2 SYSTEMPATH\CodeIgniter.php(832): CodeIgniter\Router\Router->handle('user/href=')
+ 3 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\project\\toko_buku\\public\\index.php')
+DEBUG - 2025-07-29 14:13:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:14:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-29 14:14:00 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(977): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->printInvoice('19')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-07-29 14:14:00 --> printInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-07-29 14:14:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:14:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-29 14:14:05 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(1061): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->downloadInvoice('19')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-07-29 14:14:05 --> downloadInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-07-29 14:14:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:16:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-29 14:16:44 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(1061): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->downloadInvoice('19')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-07-29 14:16:44 --> downloadInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-07-29 14:16:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:18:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-29 14:18:04 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(1061): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->downloadInvoice('19')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-07-29 14:18:04 --> downloadInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-07-29 14:18:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:18:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-29 14:18:10 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(977): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->printInvoice('19')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-07-29 14:18:10 --> printInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-07-29 14:18:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:18:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-29 14:18:13 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(977): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->printInvoice('19')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-07-29 14:18:13 --> printInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-07-29 14:18:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:18:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:19:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-29 14:19:00 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(977): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->printInvoice('19')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-07-29 14:19:00 --> printInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-07-29 14:19:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:20:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-29 14:20:13 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(1061): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->downloadInvoice('19')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-07-29 14:20:13 --> downloadInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-07-29 14:20:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-29 14:21:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-29 14:21:17 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(977): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->printInvoice('19')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-07-29 14:21:17 --> printInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-07-29 14:21:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
