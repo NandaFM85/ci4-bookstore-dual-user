@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Toko Buku</title>
+    <title>Login - Stellar Book Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2  100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD  100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -20,7 +20,7 @@
             overflow: hidden;
         }
         .login-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2  100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD  100%);
             color: white;
             padding: 2rem;
             text-align: center;
@@ -34,11 +34,11 @@
             border: 1px solid #ddd;
         }
         .form-control:focus {
-            border-color: 667eea;
+            border-color: #9D1C3B;
             box-shadow: 0 0 0 0.2rem rgba(52, 159, 235, 0.25);
         }
         .btn-login {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2  100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD  100%);
             border: none;
             border-radius: 50px;
             padding: 12px 30px;
@@ -57,7 +57,7 @@
                 <div class="login-container">
                     <div class="login-header">
                         <i class="fas fa-book fa-3x mb-3"></i>
-                        <h3>Toko Buku</h3>
+                        <h3>Stellar Bookstore</h3>
                         <p class="mb-0">Masuk ke akun Anda</p>
                     </div>
                     <div class="login-body">

@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             min-height: 100vh;
         }
         .sidebar {
@@ -45,7 +45,7 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
         .profile-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             color: white;
             border-radius: 20px;
             padding: 25px;
@@ -97,7 +97,7 @@
             box-shadow: 0 12px 35px rgba(0,0,0,0.15);
         }
         .user-stats-card .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             border: none;
             padding: 20px 25px;
         }
@@ -110,12 +110,12 @@
             overflow: hidden;
         }
         .recent-activity-card .card-header {
-            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             border: none;
             padding: 20px 25px;
         }
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             border: none;
             border-radius: 10px;
             padding: 12px 25px;
@@ -126,7 +126,7 @@
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
         .btn-success {
-            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD);
             border: none;
             border-radius: 10px;
             padding: 12px 25px;
@@ -136,11 +136,18 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
         }
+        
+        /* Fixed responsive font size untuk stats */
         .stats-number {
-            font-size: 2.5rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem) !important;
             font-weight: 700;
             margin-bottom: 0;
+            line-height: 1.2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
+        
         .stats-label {
             font-size: 0.95rem;
             color: #6c757d;
@@ -195,6 +202,38 @@
         .activity-item:hover {
             transform: translateX(5px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .stats-card {
+                padding: 20px;
+            }
+            .stats-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+            .stats-number {
+                font-size: 1.3rem !important;
+            }
+            .stats-label {
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .stats-card {
+                padding: 15px;
+            }
+            .stats-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            .stats-number {
+                font-size: 1.1rem !important;
+            }
         }
     </style>
 </head>
@@ -257,16 +296,16 @@
                         </div>
                     </div>
 
-                    <!-- Stats Cards (Without New Orders) -->
+                    <!-- Stats Cards (Fixed) -->
                     <div class="row g-4 mb-4">
                         <div class="col-md-4">
                             <div class="stats-card">
                                 <div class="d-flex align-items-center">
-                                    <div class="stats-icon" style="background: linear-gradient(135deg, #ff6b6b, #ffa500);">
+                                    <div class="stats-icon" style="background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD);">
                                         <i class="fas fa-book"></i>
                                     </div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h4 class="stats-number text-primary"><?= $stats['total_books'] ?></h4>
+                                        <h4 class="stats-number text-primary"><?= number_format($stats['total_books'] ?? 0) ?></h4>
                                         <small class="stats-label">Total Buku</small>
                                     </div>
                                 </div>
@@ -275,16 +314,52 @@
                         <div class="col-md-4">
                             <div class="stats-card">
                                 <div class="d-flex align-items-center">
-                                    <div class="stats-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                    <div class="stats-icon" style="background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD);">
                                         <i class="fas fa-users"></i>
                                     </div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h4 class="stats-number text-info"><?= $stats['total_users'] ?></h4>
+                                        <h4 class="stats-number text-info"><?= number_format($stats['total_users'] ?? 0) ?></h4>
                                         <small class="stats-label">Total User</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="stats-card">
+                                <div class="d-flex align-items-center">
+                                    <div class="stats-icon" style="background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD);">
+                                        <i class="fas fa-dollar-sign"></i>
+                                    </div>
+                                    <div class="ms-3 flex-grow-1">
+                                        <?php
+                                        // Function to format revenue safely
+                                        function formatRevenue($amount) {
+                                            if (!is_numeric($amount) || $amount == 0) {
+                                                return '0';
+                                            }
+                                            
+                                            $amount = (float) $amount;
+                                            
+                                            if ($amount >= 1000000000) {
+                                                return number_format($amount / 1000000000, 1, ',', '.') . 'M';
+                                            } elseif ($amount >= 1000000) {
+                                                return number_format($amount / 1000000, 1, ',', '.') . 'Jt';
+                                            } elseif ($amount >= 1000) {
+                                                return number_format($amount / 1000, 0, ',', '.') . 'K';
+                                            }
+                                            
+                                            return number_format($amount, 0, ',', '.');
+                                        }
+                                        
+                                        $revenue = $stats['total_revenue'] ?? 0;
+                                        ?>
+                                        <h4 class="stats-number text-success">Rp <?= formatRevenue($revenue) ?></h4>
+                                        <small class="stats-label">Total Revenue</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- User Statistics Detail -->
                     <div class="row g-4 mb-4">
@@ -300,14 +375,14 @@
                                         <div class="col-6">
                                             <div class="user-stat-item">
                                                 <i class="fas fa-crown user-stat-icon text-warning"></i>
-                                                <div class="user-stat-number text-warning"><?= $stats['admin_users'] ?></div>
+                                                <div class="user-stat-number text-warning"><?= number_format($stats['admin_users'] ?? 0) ?></div>
                                                 <small class="text-muted">Admin</small>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="user-stat-item">
-                                                <i class="fas fa-users"></i>
-                                                <div class="user-stat-number text-info"><?= $stats['regular_users'] ?></div>
+                                                <i class="fas fa-users user-stat-icon text-info"></i>
+                                                <div class="user-stat-number text-info"><?= number_format($stats['regular_users'] ?? 0) ?></div>
                                                 <small class="text-muted">User Biasa</small>
                                             </div>
                                         </div>
@@ -386,21 +461,43 @@
             });
         });
 
-        // Animate numbers on page load
+        // Animate numbers on page load - Fixed untuk mencegah NaN
         window.addEventListener('load', function() {
             const numbers = document.querySelectorAll('.stats-number, .user-stat-number');
             numbers.forEach(number => {
-                const finalValue = parseInt(number.textContent);
+                const text = number.textContent;
+                const numericValue = parseInt(text.replace(/[^\d]/g, ''));
+                
+                // Skip animasi jika value bukan number atau 0
+                if (isNaN(numericValue) || numericValue <= 0) {
+                    return;
+                }
+                
                 let currentValue = 0;
-                const increment = finalValue / 50;
+                const increment = numericValue / 50;
                 
                 const timer = setInterval(() => {
                     currentValue += increment;
-                    if (currentValue >= finalValue) {
-                        number.textContent = finalValue;
+                    if (currentValue >= numericValue) {
+                        number.textContent = text; // Kembalikan ke format asli
                         clearInterval(timer);
                     } else {
-                        number.textContent = Math.floor(currentValue);
+                        // Update dengan format yang sesuai
+                        if (text.includes('Rp')) {
+                            // Untuk revenue, gunakan format yang sama
+                            const currentFormatted = Math.floor(currentValue);
+                            if (text.includes('M')) {
+                                number.textContent = 'Rp ' + (currentFormatted / 1000000000).toFixed(1) + 'M';
+                            } else if (text.includes('Jt')) {
+                                number.textContent = 'Rp ' + (currentFormatted / 1000000).toFixed(1) + 'Jt';
+                            } else if (text.includes('K')) {
+                                number.textContent = 'Rp ' + Math.floor(currentFormatted / 1000) + 'K';
+                            } else {
+                                number.textContent = 'Rp ' + Math.floor(currentFormatted).toLocaleString();
+                            }
+                        } else {
+                            number.textContent = Math.floor(currentValue).toLocaleString();
+                        }
                     }
                 }, 30);
             });

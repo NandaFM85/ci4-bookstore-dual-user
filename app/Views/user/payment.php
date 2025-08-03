@@ -11,7 +11,7 @@
             background-color: #f8f9fa;
         }
         .navbar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD  100%);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .payment-card {
@@ -21,7 +21,7 @@
             border: none;
         }
         .payment-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD  100%);
             color: white;
             border-radius: 15px 15px 0 0;
         }
@@ -73,7 +73,7 @@
             color: white;
         }
         .btn-custom {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD  100%);
             border: none;
             border-radius: 25px;
             padding: 12px 30px;
@@ -123,11 +123,35 @@
         .success-status {
             background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
         }
+        .modal-header {
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD  100%);
+            color: white;
+            border-bottom: none;
+        }
+        .modal-header .btn-close {
+            filter: invert(1);
+        }
+        .modal-body {
+            padding: 2rem;
+        }
+        .confirmation-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+        .amount-highlight {
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD  100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 15px 0;
+        }
     </style>
 </head>
 <body>
     <!-- Navbar -->
-  <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="<?= base_url('dashboard') ?>">
@@ -265,11 +289,9 @@
                             </p>
                             
                             <!-- Scan Button -->
-                            <a href="<?= base_url('user/pay?action=complete&order_id=' . $order['id']) ?>" 
-                               class="btn scan-button"
-                               onclick="return confirmPayment()">
+                            <button type="button" class="btn scan-button" data-bs-toggle="modal" data-bs-target="#paymentConfirmModal">
                                 <i class="fas fa-qrcode me-2"></i>Konfirmasi Pembayaran
-                            </a>
+                            </button>
                             
                             <div class="mt-3">
                                 <small class="text-muted">
@@ -326,6 +348,46 @@
         </div>
     </div>
 
+    <!-- Payment Confirmation Modal -->
+    <div class="modal fade" id="paymentConfirmModal" tabindex="-1" aria-labelledby="paymentConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentConfirmModalLabel">
+                        <i class="fas fa-credit-card me-2"></i>Konfirmasi Pembayaran
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="confirmation-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h4 class="mb-3">Konfirmasi Pembayaran</h4>
+                    <p class="mb-3">Apakah Anda yakin telah melakukan pembayaran sebesar:</p>
+                    <div class="amount-highlight">
+                        Rp <?= number_format($order['total_amount'], 0, ',', '.') ?>
+                    </div>
+                    <p class="text-muted mb-4">
+                        Pesanan akan langsung dikonfirmasi sebagai selesai setelah Anda mengkonfirmasi pembayaran ini.
+                    </p>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <small>Pastikan pembayaran telah berhasil dilakukan sebelum mengkonfirmasi.</small>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-outline-secondary me-3" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Batal
+                    </button>
+                    <a href="<?= base_url('user/pay?action=complete&order_id=' . $order['id']) ?>" 
+                       class="btn btn-success">
+                        <i class="fas fa-check me-2"></i>Ya, Konfirmasi Pembayaran
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Copy to clipboard function
@@ -362,15 +424,9 @@
             });
         }
 
-        // Confirm payment function
-        function confirmPayment() {
-            return confirm('Apakah Anda yakin telah melakukan pembayaran sebesar Rp <?= number_format($order['total_amount'], 0, ',', '.') ?>? Pesanan akan langsung dikonfirmasi sebagai selesai.');
-        }
-
         // Auto refresh if payment is pending (optional)
-        <?php if ($order['status'] == 'pending_payment'): ?>
+        <?php if ($order['status'] == 'completed'): ?>
         // You can add auto-refresh logic here if needed
-        console.log('Payment status: pending');
         <?php endif; ?>
     </script>
 </body>

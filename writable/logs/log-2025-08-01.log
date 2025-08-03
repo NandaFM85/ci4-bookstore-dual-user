@@ -1,0 +1,114 @@
+DEBUG - 2025-08-01 10:03:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-01 10:04:41 --> CSRF token verified.
+DEBUG - 2025-08-01 10:04:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:04:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:04:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:04:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:04:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:04:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:05:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:05:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:05:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:05:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:05:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:05:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:05:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-01 10:06:44 --> CSRF token verified.
+INFO - 2025-08-01 10:06:44 --> UserModel insert attempt - Data: {"username":"user","email":"user123@gmail.com","password":"$2y$10$lTFMgvrezSWOR1CLV8M3gOKEcWMzYqBbtu.wrqEsedyBco2Kyepg2","fullname":"userbaru","role":"user","profile_image":"default-profile.jpg","created_at":"2025-08-01 10:06:44","updated_at":"2025-08-01 10:06:44"}
+INFO - 2025-08-01 10:06:44 --> UserModel insert result: success
+DEBUG - 2025-08-01 10:06:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:06:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-01 10:06:52 --> CSRF token verified.
+DEBUG - 2025-08-01 10:06:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:06:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:06:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:06:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:06:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:07:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:07:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:07:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:07:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:07:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:07:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:07:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:07:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:07:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:07:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:07:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:08:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-01 10:08:02 --> ProcessCheckout called - User ID: 13, Payment Method: 2
+INFO - 2025-08-01 10:08:02 --> Creating order - User: 13, Items: 3, Total: 410000
+INFO - 2025-08-01 10:08:02 --> Cart item processed - Book ID: 15, Quantity: 1, Price: 145000.00
+INFO - 2025-08-01 10:08:02 --> Cart item processed - Book ID: 14, Quantity: 1, Price: 85000.00
+INFO - 2025-08-01 10:08:02 --> Cart item processed - Book ID: 13, Quantity: 1, Price: 180000.00
+INFO - 2025-08-01 10:08:02 --> Order created with ID: 41
+INFO - 2025-08-01 10:08:02 --> Order item inserted - Book ID: 15, Quantity: 1, Price: 145000
+INFO - 2025-08-01 10:08:02 --> Order item inserted - Book ID: 14, Quantity: 1, Price: 85000
+INFO - 2025-08-01 10:08:02 --> Order item inserted - Book ID: 13, Quantity: 1, Price: 180000
+INFO - 2025-08-01 10:08:02 --> Order creation completed successfully with ID: 41
+INFO - 2025-08-01 10:08:02 --> Order created successfully with ID: 41
+DEBUG - 2025-08-01 10:08:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:08:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-01 10:08:32 --> Order 41 completed via payment confirmation by user 13
+DEBUG - 2025-08-01 10:08:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:08:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-08-01 10:08:42 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(977): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->printInvoice('41')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-08-01 10:08:42 --> printInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-08-01 10:08:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:08:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-08-01 10:08:46 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(1061): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->downloadInvoice('41')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-08-01 10:08:46 --> downloadInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-08-01 10:08:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:10:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:10:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:10:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:10:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:10:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:10:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:10:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:10:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:10:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:10:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:11:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:11:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-01 10:12:26 --> CSRF token verified.
+DEBUG - 2025-08-01 10:12:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-01 10:12:26 --> UserModel update attempt - ID: 13, Data: {"fullname":"userbaru","address":"jl test","profile_image":"1754043146_1877e29a854e3e2046f3.png","updated_at":"2025-08-01 10:12:26"}
+INFO - 2025-08-01 10:12:26 --> UserModel update result: success
+DEBUG - 2025-08-01 10:12:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:12:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-01 10:12:47 --> CSRF token verified.
+DEBUG - 2025-08-01 10:12:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-08-01 10:12:47 --> UserModel update attempt - ID: 13, Data: {"password":"$2y$10$cgZU4kqiQjtYC4UgXPqxgu5Et6HY5S5FKfMB24lzth1Z93QL6u65.","updated_at":"2025-08-01 10:12:47"}
+INFO - 2025-08-01 10:12:47 --> UserModel update result: success
+DEBUG - 2025-08-01 10:12:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:12:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:12:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:12:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-08-01 10:12:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

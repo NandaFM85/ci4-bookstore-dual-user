@@ -1,0 +1,703 @@
+DEBUG - 2025-07-31 13:05:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:05:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:06:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:06:40 --> CSRF token verified.
+INFO - 2025-07-31 13:06:40 --> UserModel insert attempt - Data: {"username":"rem2","email":"remiee85@gmail.com","password":"$2y$10$0cMsONSNLxRwDgGVfYzWnO9PR3nsdXBGCMU0cHrBwU3zugg\/5N7JG","fullname":"remieee","role":"user","profile_image":"default-profile.jpg","created_at":"2025-07-31 13:06:40","updated_at":"2025-07-31 13:06:40"}
+INFO - 2025-07-31 13:06:40 --> UserModel insert result: success
+DEBUG - 2025-07-31 13:06:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:06:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:06:50 --> CSRF token verified.
+DEBUG - 2025-07-31 13:06:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:06:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:07:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:07:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:07:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:07:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:07:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:07:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:07:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:07:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:07:40 --> ProcessCheckout called - User ID: 10, Payment Method: 1
+INFO - 2025-07-31 13:07:40 --> Creating order - User: 10, Items: 3, Total: 525000
+INFO - 2025-07-31 13:07:40 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:07:40 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:07:40 --> Cart item processed - Book ID: 10, Quantity: 1, Price: 175000.00
+INFO - 2025-07-31 13:07:40 --> Order created with ID: 19
+INFO - 2025-07-31 13:07:40 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:07:40 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:07:40 --> Order item inserted - Book ID: 10, Quantity: 1, Price: 175000
+INFO - 2025-07-31 13:07:40 --> Order creation completed successfully with ID: 19
+INFO - 2025-07-31 13:07:40 --> Order created successfully with ID: 19
+DEBUG - 2025-07-31 13:07:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:07:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:07:45 --> Order 19 completed via payment confirmation by user 10
+DEBUG - 2025-07-31 13:07:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:07:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-31 13:07:51 --> mysqli_sql_exception: Unknown column 'pm.account_info' in 'field list' in C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT o.*, u.u...', 0)
+#1 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT o.*, u.u...')
+#2 C:\project\toko_buku\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT o.*, u.u...')
+#3 C:\project\toko_buku\app\Controllers\User.php(977): CodeIgniter\Database\BaseConnection->query('SELECT o.*, u.u...', Array)
+#4 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\User->printInvoice('19')
+#5 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\project\toko_buku\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\project\toko_buku\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\project\toko_buku\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\project\toko_buku\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\project\\toko...')
+#11 {main}
+ERROR - 2025-07-31 13:07:51 --> printInvoice exception: Unknown column 'pm.account_info' in 'field list'
+DEBUG - 2025-07-31 13:07:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:08:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:08:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:08:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:08:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:08:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:08:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:08:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:08:54 --> CSRF token verified.
+DEBUG - 2025-07-31 13:08:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:08:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:08:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:09:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:09:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:09:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:09:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:10:10 --> CSRF token verified.
+DEBUG - 2025-07-31 13:10:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:10:10 --> UserModel update attempt - ID: 10, Data: {"fullname":"remieee","address":"jl tes","profile_image":"1753967410_889d4b86fd31bfa72434.png","updated_at":"2025-07-31 13:10:10"}
+INFO - 2025-07-31 13:10:10 --> UserModel update result: success
+DEBUG - 2025-07-31 13:10:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:10:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:10:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:10:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:10:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:11:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:12:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:12:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:12:16 --> CSRF token verified.
+DEBUG - 2025-07-31 13:12:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:12:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:12:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:12:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:12:53 --> CSRF token verified.
+DEBUG - 2025-07-31 13:12:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:12:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:14:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:14:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:14:32 --> CSRF token verified.
+INFO - 2025-07-31 13:14:32 --> UserModel insert attempt - Data: {"username":"rem2","email":"remiee85@gmail.com","password":"$2y$10$WWrf79hE7Cagh.b5UiOUg.LPM\/TvIA0NEp6SsCbFdnZ7gMwlRVqai","fullname":"remieee","role":"user","profile_image":"default-profile.jpg","created_at":"2025-07-31 13:14:32","updated_at":"2025-07-31 13:14:32"}
+INFO - 2025-07-31 13:14:32 --> UserModel insert result: success
+DEBUG - 2025-07-31 13:14:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:14:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:14:34 --> CSRF token verified.
+DEBUG - 2025-07-31 13:14:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:14:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:14:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:14:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:15:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:15:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:15:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:15:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:15:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:15:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:15:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:15:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:15:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:15:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:15:37 --> ProcessCheckout called - User ID: 11, Payment Method: 1
+INFO - 2025-07-31 13:15:37 --> Creating order - User: 11, Items: 3, Total: 525000
+INFO - 2025-07-31 13:15:37 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:15:37 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:15:37 --> Cart item processed - Book ID: 10, Quantity: 1, Price: 175000.00
+INFO - 2025-07-31 13:15:37 --> Order created with ID: 20
+INFO - 2025-07-31 13:15:37 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:15:37 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:15:37 --> Order item inserted - Book ID: 10, Quantity: 1, Price: 175000
+INFO - 2025-07-31 13:15:37 --> Order creation completed successfully with ID: 20
+INFO - 2025-07-31 13:15:37 --> Order created successfully with ID: 20
+DEBUG - 2025-07-31 13:15:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:15:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:15:43 --> Order 20 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:15:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:16:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:16:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:16:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:16:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:16:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:16:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:17:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:17:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:17:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:17:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:17:11 --> ProcessCheckout called - User ID: 11, Payment Method: 1
+INFO - 2025-07-31 13:17:11 --> Creating order - User: 11, Items: 3, Total: 525000
+INFO - 2025-07-31 13:17:11 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:17:11 --> Cart item processed - Book ID: 10, Quantity: 1, Price: 175000.00
+INFO - 2025-07-31 13:17:11 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:17:11 --> Order created with ID: 21
+INFO - 2025-07-31 13:17:11 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:17:11 --> Order item inserted - Book ID: 10, Quantity: 1, Price: 175000
+INFO - 2025-07-31 13:17:11 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:17:11 --> Order creation completed successfully with ID: 21
+INFO - 2025-07-31 13:17:11 --> Order created successfully with ID: 21
+DEBUG - 2025-07-31 13:17:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:17:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:17:14 --> Order 21 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:17:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:17:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:17:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:17:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:17:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:17:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:18:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:18:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:18:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:18:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:18:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:18:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:18:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:19:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:19:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:19:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:19:09 --> ProcessCheckout called - User ID: 11, Payment Method: 2
+INFO - 2025-07-31 13:19:09 --> Creating order - User: 11, Items: 3, Total: 525000
+INFO - 2025-07-31 13:19:09 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:19:09 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:19:09 --> Cart item processed - Book ID: 10, Quantity: 1, Price: 175000.00
+INFO - 2025-07-31 13:19:09 --> Order created with ID: 22
+INFO - 2025-07-31 13:19:09 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:19:09 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:19:09 --> Order item inserted - Book ID: 10, Quantity: 1, Price: 175000
+INFO - 2025-07-31 13:19:09 --> Order creation completed successfully with ID: 22
+INFO - 2025-07-31 13:19:09 --> Order created successfully with ID: 22
+DEBUG - 2025-07-31 13:19:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:19:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:19:13 --> Order 22 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:19:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:19:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:19:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:19:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:19:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:19:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:19:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:19:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:19:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:19:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:19:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:20:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:20:15 --> ProcessCheckout called - User ID: 11, Payment Method: 2
+INFO - 2025-07-31 13:20:15 --> Creating order - User: 11, Items: 3, Total: 525000
+INFO - 2025-07-31 13:20:15 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:20:15 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:20:15 --> Cart item processed - Book ID: 10, Quantity: 1, Price: 175000.00
+INFO - 2025-07-31 13:20:15 --> Order created with ID: 23
+INFO - 2025-07-31 13:20:15 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:20:15 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:20:15 --> Order item inserted - Book ID: 10, Quantity: 1, Price: 175000
+INFO - 2025-07-31 13:20:15 --> Order creation completed successfully with ID: 23
+INFO - 2025-07-31 13:20:15 --> Order created successfully with ID: 23
+DEBUG - 2025-07-31 13:20:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:20:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:20:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:20:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:20:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:20:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:20:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:20:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:21:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:21:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:21:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:21:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:21:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:22:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:22:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:22:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:22:09 --> ProcessCheckout called - User ID: 11, Payment Method: 5
+INFO - 2025-07-31 13:22:09 --> Creating order - User: 11, Items: 3, Total: 525000
+INFO - 2025-07-31 13:22:09 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:22:09 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:22:09 --> Cart item processed - Book ID: 10, Quantity: 1, Price: 175000.00
+INFO - 2025-07-31 13:22:09 --> Order created with ID: 24
+INFO - 2025-07-31 13:22:09 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:22:09 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:22:09 --> Order item inserted - Book ID: 10, Quantity: 1, Price: 175000
+INFO - 2025-07-31 13:22:09 --> Order creation completed successfully with ID: 24
+INFO - 2025-07-31 13:22:09 --> Order created successfully with ID: 24
+DEBUG - 2025-07-31 13:22:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:22:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:22:13 --> Order 24 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:22:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:22:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:22:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:22:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:22:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:22:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:22:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:22:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:22:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:22:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:22:51 --> ProcessCheckout called - User ID: 11, Payment Method: 1
+INFO - 2025-07-31 13:22:51 --> Creating order - User: 11, Items: 3, Total: 525000
+INFO - 2025-07-31 13:22:51 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:22:51 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:22:51 --> Cart item processed - Book ID: 10, Quantity: 1, Price: 175000.00
+INFO - 2025-07-31 13:22:51 --> Order created with ID: 25
+INFO - 2025-07-31 13:22:51 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:22:51 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:22:51 --> Order item inserted - Book ID: 10, Quantity: 1, Price: 175000
+INFO - 2025-07-31 13:22:51 --> Order creation completed successfully with ID: 25
+INFO - 2025-07-31 13:22:51 --> Order created successfully with ID: 25
+DEBUG - 2025-07-31 13:22:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:23:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:23:00 --> Order 25 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:23:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:23:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:23:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:23:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:24:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:24:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:24:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:24:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:24:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:24:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:24:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:24:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:24:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:25:03 --> ProcessCheckout called - User ID: 11, Payment Method: 5
+INFO - 2025-07-31 13:25:03 --> Creating order - User: 11, Items: 3, Total: 525000
+INFO - 2025-07-31 13:25:03 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:25:03 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:25:03 --> Cart item processed - Book ID: 10, Quantity: 1, Price: 175000.00
+INFO - 2025-07-31 13:25:03 --> Order created with ID: 26
+INFO - 2025-07-31 13:25:03 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:25:03 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:25:03 --> Order item inserted - Book ID: 10, Quantity: 1, Price: 175000
+INFO - 2025-07-31 13:25:03 --> Order creation completed successfully with ID: 26
+INFO - 2025-07-31 13:25:03 --> Order created successfully with ID: 26
+DEBUG - 2025-07-31 13:25:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:25:07 --> Order 26 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:25:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:25:34 --> ProcessCheckout called - User ID: 11, Payment Method: 1
+INFO - 2025-07-31 13:25:34 --> Creating order - User: 11, Items: 3, Total: 525000
+INFO - 2025-07-31 13:25:34 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:25:34 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:25:34 --> Cart item processed - Book ID: 10, Quantity: 1, Price: 175000.00
+INFO - 2025-07-31 13:25:34 --> Order created with ID: 27
+INFO - 2025-07-31 13:25:34 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:25:34 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:25:34 --> Order item inserted - Book ID: 10, Quantity: 1, Price: 175000
+INFO - 2025-07-31 13:25:34 --> Order creation completed successfully with ID: 27
+INFO - 2025-07-31 13:25:34 --> Order created successfully with ID: 27
+DEBUG - 2025-07-31 13:25:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:25:36 --> Order 27 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:25:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:25:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:26:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:26:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:26:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:26:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:26:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:26:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:26:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:26:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:26:13 --> ProcessCheckout called - User ID: 11, Payment Method: 1
+INFO - 2025-07-31 13:26:13 --> Creating order - User: 11, Items: 3, Total: 525000
+INFO - 2025-07-31 13:26:13 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:26:13 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:26:13 --> Cart item processed - Book ID: 10, Quantity: 1, Price: 175000.00
+INFO - 2025-07-31 13:26:13 --> Order created with ID: 28
+INFO - 2025-07-31 13:26:13 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:26:13 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:26:13 --> Order item inserted - Book ID: 10, Quantity: 1, Price: 175000
+INFO - 2025-07-31 13:26:13 --> Order creation completed successfully with ID: 28
+INFO - 2025-07-31 13:26:13 --> Order created successfully with ID: 28
+DEBUG - 2025-07-31 13:26:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:26:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:26:15 --> Order 28 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:26:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:27:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:27:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:27:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:27:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:27:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:27:59 --> ProcessCheckout called - User ID: 11, Payment Method: 5
+INFO - 2025-07-31 13:27:59 --> Creating order - User: 11, Items: 1, Total: 150000
+INFO - 2025-07-31 13:27:59 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:27:59 --> Order created with ID: 29
+INFO - 2025-07-31 13:27:59 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:27:59 --> Order creation completed successfully with ID: 29
+INFO - 2025-07-31 13:27:59 --> Order created successfully with ID: 29
+DEBUG - 2025-07-31 13:27:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:31:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:31:09 --> Order 29 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:31:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:32:38 --> ProcessCheckout called - User ID: 11, Payment Method: 1
+INFO - 2025-07-31 13:32:38 --> Creating order - User: 11, Items: 3, Total: 445600
+INFO - 2025-07-31 13:32:38 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:32:38 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:32:38 --> Cart item processed - Book ID: 4, Quantity: 1, Price: 95600.00
+INFO - 2025-07-31 13:32:38 --> Order created with ID: 30
+INFO - 2025-07-31 13:32:38 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:32:38 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:32:38 --> Order item inserted - Book ID: 4, Quantity: 1, Price: 95600
+INFO - 2025-07-31 13:32:38 --> Order creation completed successfully with ID: 30
+INFO - 2025-07-31 13:32:38 --> Order created successfully with ID: 30
+DEBUG - 2025-07-31 13:32:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:32:42 --> Order 30 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:32:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:32:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:33:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:33:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:33:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:33:10 --> ProcessCheckout called - User ID: 11, Payment Method: 5
+INFO - 2025-07-31 13:33:10 --> Creating order - User: 11, Items: 3, Total: 445600
+INFO - 2025-07-31 13:33:10 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:33:10 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:33:10 --> Cart item processed - Book ID: 4, Quantity: 1, Price: 95600.00
+INFO - 2025-07-31 13:33:10 --> Order created with ID: 31
+INFO - 2025-07-31 13:33:10 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:33:10 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:33:10 --> Order item inserted - Book ID: 4, Quantity: 1, Price: 95600
+INFO - 2025-07-31 13:33:10 --> Order creation completed successfully with ID: 31
+INFO - 2025-07-31 13:33:10 --> Order created successfully with ID: 31
+DEBUG - 2025-07-31 13:33:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:33:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:33:12 --> Order 31 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:33:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:36:16 --> ProcessCheckout called - User ID: 11, Payment Method: 2
+INFO - 2025-07-31 13:36:16 --> Creating order - User: 11, Items: 1, Total: 95600
+INFO - 2025-07-31 13:36:16 --> Cart item processed - Book ID: 4, Quantity: 1, Price: 95600.00
+INFO - 2025-07-31 13:36:16 --> Order created with ID: 32
+INFO - 2025-07-31 13:36:16 --> Order item inserted - Book ID: 4, Quantity: 1, Price: 95600
+INFO - 2025-07-31 13:36:16 --> Order creation completed successfully with ID: 32
+INFO - 2025-07-31 13:36:16 --> Order created successfully with ID: 32
+DEBUG - 2025-07-31 13:36:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:36:21 --> Order 32 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:36:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:36:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:37:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:37:01 --> ProcessCheckout called - User ID: 11, Payment Method: 1
+INFO - 2025-07-31 13:37:01 --> Creating order - User: 11, Items: 4, Total: 620600
+INFO - 2025-07-31 13:37:01 --> Cart item processed - Book ID: 4, Quantity: 1, Price: 95600.00
+INFO - 2025-07-31 13:37:01 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:37:01 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:37:01 --> Cart item processed - Book ID: 10, Quantity: 1, Price: 175000.00
+INFO - 2025-07-31 13:37:01 --> Order created with ID: 33
+INFO - 2025-07-31 13:37:01 --> Order item inserted - Book ID: 4, Quantity: 1, Price: 95600
+INFO - 2025-07-31 13:37:01 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:37:01 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:37:01 --> Order item inserted - Book ID: 10, Quantity: 1, Price: 175000
+INFO - 2025-07-31 13:37:01 --> Order creation completed successfully with ID: 33
+INFO - 2025-07-31 13:37:01 --> Order created successfully with ID: 33
+DEBUG - 2025-07-31 13:37:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:37:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:37:06 --> Order 33 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:37:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:37:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:37:27 --> CSRF token verified.
+DEBUG - 2025-07-31 13:37:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:37:27 --> UserModel update attempt - ID: 11, Data: {"fullname":"remiee3","address":"jl tes\r\n","profile_image":"1753969047_627ceca7d43820a5c5b0.png","updated_at":"2025-07-31 13:37:27"}
+INFO - 2025-07-31 13:37:27 --> UserModel update result: success
+DEBUG - 2025-07-31 13:37:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:37:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:37:52 --> CSRF token verified.
+DEBUG - 2025-07-31 13:37:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:37:52 --> UserModel update attempt - ID: 11, Data: {"password":"$2y$10$HCNLT6lied1BpcV4B4TvUOwBwmQ6ox0e14CTxnq8p7C\/ZiZUhHSTO","updated_at":"2025-07-31 13:37:52"}
+INFO - 2025-07-31 13:37:52 --> UserModel update result: success
+DEBUG - 2025-07-31 13:37:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:38:16 --> ProcessCheckout called - User ID: 11, Payment Method: 1
+INFO - 2025-07-31 13:38:16 --> Creating order - User: 11, Items: 4, Total: 620600
+INFO - 2025-07-31 13:38:16 --> Cart item processed - Book ID: 4, Quantity: 1, Price: 95600.00
+INFO - 2025-07-31 13:38:16 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:38:16 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:38:16 --> Cart item processed - Book ID: 10, Quantity: 1, Price: 175000.00
+INFO - 2025-07-31 13:38:16 --> Order created with ID: 34
+INFO - 2025-07-31 13:38:16 --> Order item inserted - Book ID: 4, Quantity: 1, Price: 95600
+INFO - 2025-07-31 13:38:16 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:38:16 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:38:16 --> Order item inserted - Book ID: 10, Quantity: 1, Price: 175000
+INFO - 2025-07-31 13:38:16 --> Order creation completed successfully with ID: 34
+INFO - 2025-07-31 13:38:16 --> Order created successfully with ID: 34
+DEBUG - 2025-07-31 13:38:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:38:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:38:58 --> ProcessCheckout called - User ID: 11, Payment Method: 1
+INFO - 2025-07-31 13:38:58 --> Creating order - User: 11, Items: 4, Total: 620600
+INFO - 2025-07-31 13:38:58 --> Cart item processed - Book ID: 4, Quantity: 1, Price: 95600.00
+INFO - 2025-07-31 13:38:58 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:38:58 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:38:58 --> Cart item processed - Book ID: 10, Quantity: 1, Price: 175000.00
+INFO - 2025-07-31 13:38:58 --> Order created with ID: 35
+INFO - 2025-07-31 13:38:58 --> Order item inserted - Book ID: 4, Quantity: 1, Price: 95600
+INFO - 2025-07-31 13:38:58 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:38:58 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:38:58 --> Order item inserted - Book ID: 10, Quantity: 1, Price: 175000
+INFO - 2025-07-31 13:38:58 --> Order creation completed successfully with ID: 35
+INFO - 2025-07-31 13:38:58 --> Order created successfully with ID: 35
+DEBUG - 2025-07-31 13:38:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:39:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:39:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:39:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:39:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:39:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:39:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:39:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:39:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:39:50 --> Order 35 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:39:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:39:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:39:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:39:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:40:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:40:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:40:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:40:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:40:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:40:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:40:31 --> ProcessCheckout called - User ID: 11, Payment Method: 1
+INFO - 2025-07-31 13:40:31 --> Creating order - User: 11, Items: 2, Total: 191200
+INFO - 2025-07-31 13:40:31 --> Cart item processed - Book ID: 4, Quantity: 2, Price: 95600.00
+INFO - 2025-07-31 13:40:31 --> Order created with ID: 36
+INFO - 2025-07-31 13:40:31 --> Order item inserted - Book ID: 4, Quantity: 2, Price: 95600
+INFO - 2025-07-31 13:40:31 --> Order creation completed successfully with ID: 36
+INFO - 2025-07-31 13:40:31 --> Order created successfully with ID: 36
+DEBUG - 2025-07-31 13:40:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:40:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:40:35 --> Order 36 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:40:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:40:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:40:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:40:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:40:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:40:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:40:59 --> ProcessCheckout called - User ID: 11, Payment Method: 1
+INFO - 2025-07-31 13:40:59 --> Creating order - User: 11, Items: 1, Total: 95600
+INFO - 2025-07-31 13:40:59 --> Cart item processed - Book ID: 4, Quantity: 1, Price: 95600.00
+INFO - 2025-07-31 13:40:59 --> Order created with ID: 37
+INFO - 2025-07-31 13:40:59 --> Order item inserted - Book ID: 4, Quantity: 1, Price: 95600
+INFO - 2025-07-31 13:40:59 --> Order creation completed successfully with ID: 37
+INFO - 2025-07-31 13:40:59 --> Order created successfully with ID: 37
+DEBUG - 2025-07-31 13:40:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:41:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:41:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:41:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:41:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:41:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:41:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:41:57 --> ProcessCheckout called - User ID: 11, Payment Method: 1
+INFO - 2025-07-31 13:41:57 --> Creating order - User: 11, Items: 2, Total: 350000
+INFO - 2025-07-31 13:41:57 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:41:57 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:41:57 --> Order created with ID: 38
+INFO - 2025-07-31 13:41:57 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:41:57 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:41:57 --> Order creation completed successfully with ID: 38
+INFO - 2025-07-31 13:41:57 --> Order created successfully with ID: 38
+DEBUG - 2025-07-31 13:41:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:42:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:42:02 --> Order 38 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:42:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:42:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:42:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:42:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:42:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:42:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:42:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:42:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:42:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:42:56 --> ProcessCheckout called - User ID: 11, Payment Method: 1
+INFO - 2025-07-31 13:42:56 --> Creating order - User: 11, Items: 3, Total: 530000
+INFO - 2025-07-31 13:42:56 --> Cart item processed - Book ID: 9, Quantity: 1, Price: 200000.00
+INFO - 2025-07-31 13:42:56 --> Cart item processed - Book ID: 8, Quantity: 1, Price: 150000.00
+INFO - 2025-07-31 13:42:56 --> Cart item processed - Book ID: 13, Quantity: 1, Price: 180000.00
+INFO - 2025-07-31 13:42:56 --> Order created with ID: 39
+INFO - 2025-07-31 13:42:56 --> Order item inserted - Book ID: 9, Quantity: 1, Price: 200000
+INFO - 2025-07-31 13:42:56 --> Order item inserted - Book ID: 8, Quantity: 1, Price: 150000
+INFO - 2025-07-31 13:42:56 --> Order item inserted - Book ID: 13, Quantity: 1, Price: 180000
+INFO - 2025-07-31 13:42:56 --> Order creation completed successfully with ID: 39
+INFO - 2025-07-31 13:42:56 --> Order created successfully with ID: 39
+DEBUG - 2025-07-31 13:42:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:43:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:43:00 --> Order 39 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:43:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:43:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:43:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:43:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:43:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:43:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:43:15 --> ProcessCheckout called - User ID: 11, Payment Method: 1
+INFO - 2025-07-31 13:43:15 --> Creating order - User: 11, Items: 1, Total: 180000
+INFO - 2025-07-31 13:43:15 --> Cart item processed - Book ID: 13, Quantity: 1, Price: 180000.00
+INFO - 2025-07-31 13:43:15 --> Order created with ID: 40
+INFO - 2025-07-31 13:43:15 --> Order item inserted - Book ID: 13, Quantity: 1, Price: 180000
+INFO - 2025-07-31 13:43:15 --> Order creation completed successfully with ID: 40
+INFO - 2025-07-31 13:43:15 --> Order created successfully with ID: 40
+DEBUG - 2025-07-31 13:43:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:43:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:43:19 --> Order 40 completed via payment confirmation by user 11
+DEBUG - 2025-07-31 13:43:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:43:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:44:04 --> CSRF token verified.
+DEBUG - 2025-07-31 13:44:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:44:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:44:15 --> CSRF token verified.
+DEBUG - 2025-07-31 13:44:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:44:15 --> UserModel update attempt - ID: 11, Data: {"fullname":"remiee123","address":"jl tes\r\n11","profile_image":"1753969455_4b8123b6561c76f5a5d4.png","updated_at":"2025-07-31 13:44:15"}
+INFO - 2025-07-31 13:44:15 --> UserModel update result: success
+DEBUG - 2025-07-31 13:44:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:44:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:44:32 --> CSRF token verified.
+DEBUG - 2025-07-31 13:44:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:44:32 --> UserModel update attempt - ID: 11, Data: {"password":"$2y$10$vmMU0SU3442etcUGUtduZ.eDL1.Lq3WXw5J9vHbeXfuvt\/4g63Q6S","updated_at":"2025-07-31 13:44:32"}
+INFO - 2025-07-31 13:44:32 --> UserModel update result: success
+DEBUG - 2025-07-31 13:44:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:44:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:44:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:46:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:46:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:47:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:47:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:50:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:50:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:51:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:51:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:51:12 --> CSRF token verified.
+DEBUG - 2025-07-31 13:51:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:51:12 --> UserModel update attempt - ID: 11, Data: {"fullname":"remiee123","address":"jl tes\r\n11","updated_at":"2025-07-31 13:51:12"}
+INFO - 2025-07-31 13:51:12 --> UserModel update result: success
+DEBUG - 2025-07-31 13:51:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:51:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:51:23 --> CSRF token verified.
+DEBUG - 2025-07-31 13:51:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:51:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:51:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:51:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:51:51 --> CSRF token verified.
+DEBUG - 2025-07-31 13:51:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:51:51 --> UserModel update attempt - ID: 11, Data: {"fullname":"remiee123","address":"jl tes\r\n11","profile_image":"1753969911_a43c6f24f783a4c5c6e5.png","updated_at":"2025-07-31 13:51:51"}
+INFO - 2025-07-31 13:51:51 --> UserModel update result: success
+DEBUG - 2025-07-31 13:51:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 13:51:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:16:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:16:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 15:16:20 --> CSRF token verified.
+DEBUG - 2025-07-31 15:16:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:16:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:16:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 15:16:42 --> CSRF token verified.
+DEBUG - 2025-07-31 15:16:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:16:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 15:16:48 --> CSRF token verified.
+DEBUG - 2025-07-31 15:16:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:16:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 15:17:40 --> CSRF token verified.
+DEBUG - 2025-07-31 15:17:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 15:17:41 --> UserModel insert attempt - Data: {"username":"admin2","email":"admin@tokobuku.com","password":"$2y$10$Achamtu1Btzl\/YKr7.8aX.3tcbDE4KW\/inNcTZMyrQo.ZHslAqtQm","fullname":"Administrator","address":"jl admin","role":"admin","profile_image":"default-profile.jpg","created_at":"2025-07-31 15:17:41","updated_at":"2025-07-31 15:17:41"}
+INFO - 2025-07-31 15:17:41 --> UserModel insert result: success
+DEBUG - 2025-07-31 15:17:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:17:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:17:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:17:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 15:18:02 --> CSRF token verified.
+DEBUG - 2025-07-31 15:18:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:18:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:18:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 15:18:11 --> CSRF token verified.
+DEBUG - 2025-07-31 15:18:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:18:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 15:18:15 --> CSRF token verified.
+DEBUG - 2025-07-31 15:18:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:18:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:19:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:19:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:19:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:19:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 15:20:01 --> CSRF token verified.
+DEBUG - 2025-07-31 15:20:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:20:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:20:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:20:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:20:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:20:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:20:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:20:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 15:20:29 --> CSRF token verified.
+DEBUG - 2025-07-31 15:20:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:20:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:21:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 15:21:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

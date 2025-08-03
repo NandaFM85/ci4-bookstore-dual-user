@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             min-height: 100vh;
         }
         .sidebar {
@@ -47,7 +47,7 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
         .profile-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             color: white;
             border-radius: 20px;
             padding: 25px;
@@ -95,12 +95,12 @@
             overflow: hidden;
         }
         .table-card .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             border: none;
             padding: 20px 25px;
         }
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             border: none;
             border-radius: 10px;
             padding: 12px 25px;
@@ -121,10 +121,12 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
         }
+        /* Responsive font size for stats number */
         .stats-number {
-            font-size: 2.5rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem) !important;
             font-weight: 700;
             margin-bottom: 0;
+            line-height: 1.2;
         }
         .stats-label {
             font-size: 0.95rem;
@@ -145,7 +147,7 @@
             overflow: hidden;
         }
         .table thead th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             color: white;
             border: none;
             font-weight: 600;
@@ -177,6 +179,38 @@
         .alert-danger {
             background: linear-gradient(135deg, #ff6b6b, #ffa500);
             color: white;
+        }
+        
+        /* Additional responsive adjustments */
+        @media (max-width: 768px) {
+            .stats-card {
+                padding: 20px;
+            }
+            .stats-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+            .stats-number {
+                font-size: 1.3rem !important;
+            }
+            .stats-label {
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .stats-card {
+                padding: 15px;
+            }
+            .stats-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            .stats-number {
+                font-size: 1.1rem !important;
+            }
         }
     </style>
 </head>
@@ -249,7 +283,7 @@
                         <div class="col-md-3">
                             <div class="stats-card">
                                 <div class="d-flex align-items-center">
-                                    <div class="stats-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                    <div class="stats-icon" style="background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD);">
                                         <i class="fas fa-file-invoice"></i>
                                     </div>
                                     <div class="ms-3 flex-grow-1">
@@ -259,23 +293,44 @@
                                 </div>
                             </div>
                         </div>
+                       <div class="col-md-3">
+    <div class="stats-card">
+        <div class="d-flex align-items-center">
+            <div class="stats-icon" style="background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD);">
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="ms-3 flex-grow-1">
+                <?php
+                function formatRevenue($amount) {
+                    if (!is_numeric($amount) || $amount == 0) {
+                        return '0';
+                    }
+                    
+                    $amount = (float) $amount;
+                    
+                    if ($amount >= 1000000000) {
+                        return number_format($amount / 1000000000, 1, ',', '.') . 'M';
+                    } elseif ($amount >= 1000000) {
+                        return number_format($amount / 1000000, 1, ',', '.') . 'Jt';
+                    } elseif ($amount >= 1000) {
+                        return number_format($amount / 1000, 0, ',', '.') . 'K';
+                    }
+                    
+                    return number_format($amount, 0, ',', '.');
+                }
+                
+                $revenue = $stats['total_revenue'] ?? 0;
+                ?>
+                <h4 class="stats-number text-success">Rp <?= formatRevenue($revenue) ?></h4>
+                <small class="stats-label">Total Revenue</small>
+            </div>
+        </div>
+    </div>
+</div>
                         <div class="col-md-3">
                             <div class="stats-card">
                                 <div class="d-flex align-items-center">
-                                    <div class="stats-icon" style="background: linear-gradient(135deg, #4ecdc4, #44a08d);">
-                                        <i class="fas fa-dollar-sign"></i>
-                                    </div>
-                                    <div class="ms-3 flex-grow-1">
-                                        <h4 class="stats-number text-success">Rp <?= number_format($stats['total_revenue'] / 1000000, 1) ?>M</h4>
-                                        <small class="stats-label">Total Revenue</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="stats-card">
-                                <div class="d-flex align-items-center">
-                                    <div class="stats-icon" style="background: linear-gradient(135deg, #36b9cc, #28a745);">
+                                    <div class="stats-icon" style="background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD);">
                                         <i class="fas fa-check-circle"></i>
                                     </div>
                                     <div class="ms-3 flex-grow-1">
@@ -288,7 +343,7 @@
                         <div class="col-md-3">
                             <div class="stats-card">
                                 <div class="d-flex align-items-center">
-                                    <div class="stats-icon" style="background: linear-gradient(135deg, #f6c23e, #ffa500);">
+                                    <div class="stats-icon" style="background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD);">
                                         <i class="fas fa-clock"></i>
                                     </div>
                                     <div class="ms-3 flex-grow-1">
@@ -462,7 +517,7 @@
                                 clearInterval(timer);
                             } else {
                                 if (text.includes('Rp')) {
-                                    number.textContent = 'Rp ' + Math.floor(currentValue / 1000000 * 10) / 10 + 'M';
+                                    number.textContent = 'Rp ' + Math.floor(currentValue).toLocaleString();
                                 } else {
                                     number.textContent = Math.floor(currentValue).toLocaleString();
                                 }

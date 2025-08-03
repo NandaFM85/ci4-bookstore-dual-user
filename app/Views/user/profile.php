@@ -12,7 +12,7 @@
             background-color: #f8f9fa;
         }
         .navbar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD  100%);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .profile-card {
@@ -22,7 +22,7 @@
             overflow: hidden;
         }
         .profile-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD  100%);
             color: white;
             padding: 30px;
             text-align: center;
@@ -57,7 +57,7 @@
             opacity: 1;
         }
         .btn-custom {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD  100%);
             border: none;
             border-radius: 25px;
             padding: 10px 25px;
