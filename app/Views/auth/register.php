@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -21,7 +21,7 @@
             overflow: hidden;
         }
         .register-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             color: white;
             padding: 2rem;
             text-align: center;
@@ -35,11 +35,11 @@
             border: 1px solid #ddd;
         }
         .form-control:focus {
-            border-color: #667eea;
+            border-color: #7D26Cd;
             box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
         }
         .btn-register {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             border: none;
             border-radius: 50px;
             padding: 12px 30px;

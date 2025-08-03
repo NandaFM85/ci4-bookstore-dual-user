@@ -11,7 +11,7 @@
             background-color: #f8f9fa;
         }
         .navbar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .cart-badge {
@@ -41,7 +41,7 @@
             transform: translateY(-2px);
         }
         .order-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             color: white;
             padding: 20px;
         }
@@ -90,7 +90,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         .btn-custom {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             border: none;
             border-radius: 20px;
             padding: 8px 20px;
@@ -353,23 +353,6 @@
                                             <i class="fas fa-credit-card me-1"></i>Bayar Sekarang
                                         </a>
                                     <?php endif; ?>
-
-                                    <div class="btn-group">
-                                        <button class="btn btn-outline-primary btn-sm" onclick="showInvoice(<?= $order['id'] ?>)">
-                                            <i class="fas fa-file-invoice me-1"></i>Invoice
-                                        </button>
-                                        <button class="btn btn-outline-primary btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
-                                            <span class="visually-hidden">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="<?= base_url('user/printInvoice/' . $order['id']) ?>" target="_blank"">
-                                                <i class="fas fa-print me-2"></i>Print Invoice
-                                            </a></li>
-                                            <li><a class="dropdown-item" href="<?= base_url('user/downloadInvoice/' . $order['id']) ?>">
-                                                <i class="fas fa-download me-2"></i>Download PDF
-                                            </a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>

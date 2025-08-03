@@ -9,7 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             min-height: 100vh;
         }
         .sidebar {
@@ -46,7 +46,7 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
         .profile-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             color: white;
             border-radius: 20px;
             padding: 25px;
@@ -78,7 +78,7 @@
             overflow: hidden;
         }
         .book-card .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             border: none;
             padding: 20px 25px;
         }
@@ -104,7 +104,7 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
         .modal-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             color: white;
             border-radius: 20px 20px 0 0;
             border: none;
@@ -121,11 +121,11 @@
             transition: all 0.3s ease;
         }
         .form-control:focus, .form-select:focus {
-            border-color: #667eea;
+            border-color: #9D1C3B;
             box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
         }
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             border: none;
             border-radius: 10px;
             padding: 12px 25px;
@@ -223,15 +223,15 @@
             cursor: pointer;
         }
         .dataTables_paginate .paginate_button:hover:not(.disabled) {
-            background: #667eea;
+            background: #9D1C3B;
             color: white;
-            border-color: #667eea;
+            border-color: #9D1C3B;
             transform: translateY(-1px);
         }
         .dataTables_paginate .paginate_button.current {
-            background: #667eea;
+            background: #9D1C3B;
             color: white;
-            border-color: #667eea;
+            border-color: #9D1C3B;
         }
         .dataTables_paginate .paginate_button.disabled {
             opacity: 0.5;
@@ -274,14 +274,14 @@
         }
         .price-text {
             font-weight: 600;
-            color: #28a745;
+            color: #9D1C3B;
         }
         .stock-low {
-            color: #dc3545;
+            color: #1E1B22;
             font-weight: 600;
         }
         .stock-normal {
-            color: #28a745;
+            color: #9D1C3B;
             font-weight: 600;
         }
         

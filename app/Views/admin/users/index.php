@@ -9,7 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             min-height: 100vh;
         }
         .sidebar {
@@ -46,7 +46,7 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
         .profile-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             color: white;
             border-radius: 20px;
             padding: 25px;
@@ -82,7 +82,7 @@
             box-shadow: 0 12px 35px rgba(0,0,0,0.15);
         }
         .user-card .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             border: none;
             padding: 20px 25px;
         }
@@ -108,7 +108,7 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
         .modal-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             color: white;
             border-radius: 20px 20px 0 0;
             border: none;
@@ -129,7 +129,7 @@
             box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
         }
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9D1C3B 0%, #7D26CD 100%);
             border: none;
             border-radius: 10px;
             padding: 12px 25px;

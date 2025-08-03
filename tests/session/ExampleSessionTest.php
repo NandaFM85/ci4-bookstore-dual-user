@@ -1,4 +1,4 @@
-<?php
+    git remote add origin <repository_url><?php
 
 use CodeIgniter\Test\CIUnitTestCase;
 

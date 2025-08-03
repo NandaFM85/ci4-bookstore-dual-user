@@ -31,7 +31,746 @@ class User extends BaseController
         $this->db = \Config\Database::connect();
     }
 
-    // Halaman profil user
+    // ... (kode lainnya tetap sama sampai method printInvoice) ...
+
+    // FIXED: Print Invoice Method
+    public function printInvoice($orderId)
+    {
+        if (!session()->get('isLoggedIn')) {
+            return redirect()->to('/auth/login');
+        }
+
+        $userId = session()->get('id');
+
+        if (!$orderId || !is_numeric($orderId)) {
+            session()->setFlashdata('error', 'ID pesanan tidak valid');
+            return redirect()->to('/user/orders');
+        }
+
+        try {
+            // Get order dengan query langsung
+            $orderSql = "SELECT o.*, u.username, u.fullname, u.email, u.address, pm.name as payment_method_name, pm.account_info
+                         FROM orders o 
+                         JOIN users u ON u.id = o.user_id 
+                         LEFT JOIN payment_methods pm ON pm.id = o.payment_method
+                         WHERE o.id = ? AND o.user_id = ?";
+            $orderQuery = $this->db->query($orderSql, [$orderId, $userId]);
+            $order = $orderQuery->getRowArray();
+
+            if (!$order) {
+                session()->setFlashdata('error', 'Pesanan tidak ditemukan');
+                return redirect()->to('/user/orders');
+            }
+
+            // Get order items
+            $itemsSql = "SELECT oi.*, b.title, b.author, b.isbn, b.cover_image 
+                        FROM order_items oi 
+                        JOIN books b ON b.id = oi.book_id 
+                        WHERE oi.order_id = ?
+                        ORDER BY oi.id";
+            $itemsQuery = $this->db->query($itemsSql, [$orderId]);
+            $order['items'] = $itemsQuery->getResultArray();
+
+            // Calculate totals
+            $order['total_quantity'] = array_sum(array_column($order['items'], 'quantity'));
+            $order['subtotal'] = array_sum(array_map(function($item) {
+                return $item['price'] * $item['quantity'];
+            }, $order['items']));
+
+            // Format dates
+            $order['formatted_created_date'] = date('d F Y, H:i', strtotime($order['created_at']));
+            $order['formatted_print_date'] = date('d F Y, H:i');
+
+            // Get status text
+            $statusMap = [
+                'pending_payment' => 'Menunggu Pembayaran',
+                'pending_verification' => 'Menunggu Verifikasi',
+                'approved' => 'Disetujui',
+                'on_shipping' => 'Sedang Dikirim',
+                'completed' => 'Selesai',
+                'cancelled' => 'Dibatalkan'
+            ];
+            $order['status_text'] = $statusMap[$order['status']] ?? ucfirst($order['status']);
+
+            // Company info
+            $company = [
+                'name' => 'Toko Buku Online',
+                'address' => 'Jl. Raya Bookstore No. 123, Jakarta Selatan 12345',
+                'phone' => '(021) 1234-5678',
+                'email' => 'info@tokobuku.com',
+                'website' => 'www.tokobuku.com'
+            ];
+
+            $data = [
+                'title' => 'Invoice - ' . $order['order_number'],
+                'order' => $order,
+                'company' => $company
+            ];
+
+            // Return view khusus untuk print (tanpa layout navbar/footer)
+            return view('user/print_invoice', $data);
+
+        } catch (\Exception $e) {
+            log_message('error', 'printInvoice exception: ' . $e->getMessage());
+            session()->setFlashdata('error', 'Terjadi kesalahan sistem');
+            return redirect()->to('/user/orders');
+        }
+    }
+
+    // FIXED: Download Invoice as HTML
+    public function downloadInvoice($orderId)
+    {
+        if (!session()->get('isLoggedIn')) {
+            return redirect()->to('/auth/login');
+        }
+
+        $userId = session()->get('id');
+
+        if (!$orderId || !is_numeric($orderId)) {
+            session()->setFlashdata('error', 'ID pesanan tidak valid');
+            return redirect()->to('/user/orders');
+        }
+
+        try {
+            // Get order dengan query langsung
+            $orderSql = "SELECT o.*, u.username, u.fullname, u.email, u.address, pm.name as payment_method_name, pm.account_info
+                         FROM orders o 
+                         JOIN users u ON u.id = o.user_id 
+                         LEFT JOIN payment_methods pm ON pm.id = o.payment_method
+                         WHERE o.id = ? AND o.user_id = ?";
+            $orderQuery = $this->db->query($orderSql, [$orderId, $userId]);
+            $order = $orderQuery->getRowArray();
+
+            if (!$order) {
+                session()->setFlashdata('error', 'Pesanan tidak ditemukan');
+                return redirect()->to('/user/orders');
+            }
+
+            // Get order items
+            $itemsSql = "SELECT oi.*, b.title, b.author, b.isbn, b.cover_image 
+                        FROM order_items oi 
+                        JOIN books b ON b.id = oi.book_id 
+                        WHERE oi.order_id = ?
+                        ORDER BY oi.id";
+            $itemsQuery = $this->db->query($itemsSql, [$orderId]);
+            $order['items'] = $itemsQuery->getResultArray();
+
+            // Calculate totals
+            $order['total_quantity'] = array_sum(array_column($order['items'], 'quantity'));
+            $order['subtotal'] = array_sum(array_map(function($item) {
+                return $item['price'] * $item['quantity'];
+            }, $order['items']));
+
+            // Generate HTML content for download
+            $html = $this->generateInvoiceHTML($order);
+
+            // Set headers untuk download
+            $filename = 'Invoice_' . $order['order_number'] . '_' . date('Y-m-d') . '.html';
+            
+            return $this->response
+                ->setHeader('Content-Type', 'text/html; charset=utf-8')
+                ->setHeader('Content-Disposition', 'attachment; filename="' . $filename . '"')
+                ->setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+                ->setHeader('Pragma', 'no-cache')
+                ->setHeader('Expires', '0')
+                ->setBody($html);
+
+        } catch (\Exception $e) {
+            log_message('error', 'downloadInvoice exception: ' . $e->getMessage());
+            session()->setFlashdata('error', 'Terjadi kesalahan sistem: ' . $e->getMessage());
+            return redirect()->to('/user/orders');
+        }
+    }
+
+    // ENHANCED: Helper method untuk generate HTML invoice dengan styling yang lebih baik
+    private function generateInvoiceHTML($order)
+    {
+        // Company info
+        $company = [
+            'name' => 'Toko Buku Online',
+            'address' => 'Jl. Raya Bookstore No. 123, Jakarta Selatan 12345',
+            'phone' => '(021) 1234-5678',
+            'email' => 'info@tokobuku.com',
+            'website' => 'www.tokobuku.com'
+        ];
+
+        // Format dates
+        $createdDate = date('d F Y, H:i', strtotime($order['created_at']));
+        $printDate = date('d F Y, H:i');
+
+        // Status text
+        $statusMap = [
+            'pending_payment' => 'Menunggu Pembayaran',
+            'pending_verification' => 'Menunggu Verifikasi',
+            'approved' => 'Disetujui',
+            'on_shipping' => 'Sedang Dikirim',
+            'completed' => 'Selesai',
+            'cancelled' => 'Dibatalkan'
+        ];
+        $statusText = $statusMap[$order['status']] ?? ucfirst($order['status']);
+
+        // Generate status badge class
+        $statusBadgeClass = 'status-' . str_replace(['pending_', '_'], ['', '-'], $order['status']);
+
+        $html = '<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - ' . htmlspecialchars($order['order_number']) . '</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .invoice-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .invoice-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .invoice-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+        }
+        
+        .company-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .company-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .company-details {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+        
+        .invoice-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .invoice-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .info-section h4 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 8px;
+        }
+        
+        .info-section p {
+            margin: 8px 0;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .info-section strong {
+            font-weight: 600;
+            min-width: 120px;
+        }
+        
+        .invoice-body {
+            padding: 30px;
+        }
+        
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .items-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .items-table td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 13px;
+            vertical-align: middle;
+        }
+        
+        .items-table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .items-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .text-right {
+            text-align: right;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .total-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 15px;
+            padding: 5px 0;
+        }
+        
+        .total-row.final {
+            font-weight: 700;
+            font-size: 20px;
+            color: #28a745;
+            padding: 15px 0;
+            margin-top: 15px;
+            border-top: 2px solid #dee2e6;
+            background: white;
+            padding: 20px;
+            margin: 15px -25px -25px -25px;
+            border-radius: 0 0 12px 12px;
+        }
+        
+        .invoice-footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .invoice-footer p {
+            margin: 8px 0;
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-pending-payment { background: #fff3cd; color: #856404; }
+        .status-pending-verification { background: #cce5ff; color: #004085; }
+        .status-approved { background: #d4edda; color: #155724; }
+        .status-on-shipping { background: #d1ecf1; color: #0c5460; }
+        .status-completed { background: #d4edda; color: #155724; }
+        .status-cancelled { background: #f8d7da; color: #721c24; }
+        
+        .book-title {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .book-author {
+            font-style: italic;
+            color: #6c757d;
+        }
+        
+        .price-cell {
+            font-weight: 600;
+            color: #28a745;
+        }
+        
+        .quantity-badge {
+            background: #e9ecef;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        
+        @media print {
+            body {
+                background: white !important;
+                padding: 0 !important;
+            }
+            
+            .invoice-container {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .invoice-info {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .items-table {
+                font-size: 11px;
+            }
+            
+            .items-table th,
+            .items-table td {
+                padding: 8px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="invoice-header">
+            <div class="company-info">
+                <div class="company-name">' . htmlspecialchars($company['name']) . '</div>
+                <div class="company-details">
+                    ' . htmlspecialchars($company['address']) . '<br>
+                    📞 ' . htmlspecialchars($company['phone']) . ' | 📧 ' . htmlspecialchars($company['email']) . '<br>
+                    🌐 ' . htmlspecialchars($company['website']) . '
+                </div>
+            </div>
+            
+            <div class="invoice-title">INVOICE</div>
+            
+            <div class="invoice-info">
+                <div class="info-section">
+                    <h4>📋 Informasi Pesanan</h4>
+                    <p><strong>No. Pesanan:</strong> <span>' . htmlspecialchars($order['order_number']) . '</span></p>
+                    <p><strong>Tanggal Pesanan:</strong> <span>' . $createdDate . '</span></p>
+                    <p><strong>Status:</strong> <span class="status-badge ' . $statusBadgeClass . '">' . $statusText . '</span></p>
+                    ' . (isset($order['payment_method_name']) ? '<p><strong>Metode Bayar:</strong> <span>' . htmlspecialchars($order['payment_method_name']) . '</span></p>' : '') . '
+                </div>
+                <div class="info-section">
+                    <h4>👤 Informasi Pelanggan</h4>
+                    <p><strong>Nama:</strong> <span>' . htmlspecialchars($order['fullname'] ?: $order['username']) . '</span></p>
+                    <p><strong>Email:</strong> <span>' . htmlspecialchars($order['email']) . '</span></p>
+                    <p><strong>Username:</strong> <span>' . htmlspecialchars($order['username']) . '</span></p>
+                    ' . ($order['address'] ? '<p><strong>Alamat:</strong> <span>' . htmlspecialchars($order['address']) . '</span></p>' : '') . '
+                </div>
+            </div>
+        </div>
+
+        <div class="invoice-body">
+            <table class="items-table">
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">No</th>
+                        <th style="width: 35%;">Nama Buku</th>
+                        <th style="width: 20%;">Penulis</th>
+                        <th style="width: 15%;">ISBN</th>
+                        <th style="width: 8%;" class="text-center">Qty</th>
+                        <th style="width: 12%;" class="text-right">Harga</th>
+                        <th style="width: 15%;" class="text-right">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>';
+
+        $no = 1;
+        foreach ($order['items'] as $item) {
+            $subtotal = $item['price'] * $item['quantity'];
+            $html .= '
+                    <tr>
+                        <td class="text-center">' . $no++ . '</td>
+                        <td>
+                            <div class="book-title">' . htmlspecialchars($item['title']) . '</div>
+                        </td>
+                        <td>
+                            <div class="book-author">' . htmlspecialchars($item['author']) . '</div>
+                        </td>
+                        <td><code>' . htmlspecialchars($item['isbn']) . '</code></td>
+                        <td class="text-center">
+                            <span class="quantity-badge">' . $item['quantity'] . '</span>
+                        </td>
+                        <td class="text-right price-cell">Rp ' . number_format($item['price'], 0, ',', '.') . '</td>
+                        <td class="text-right price-cell"><strong>Rp ' . number_format($subtotal, 0, ',', '.') . '</strong></td>
+                    </tr>';
+        }
+
+        $totalItems = count($order['items']);
+        $totalQuantity = array_sum(array_column($order['items'], 'quantity'));
+
+        $html .= '
+                </tbody>
+            </table>
+
+            <div class="total-section">
+                <div class="total-row">
+                    <span>📚 Total Item:</span>
+                    <span><strong>' . $totalItems . ' jenis buku</strong></span>
+                </div>
+                <div class="total-row">
+                    <span>📦 Total Quantity:</span>
+                    <span><strong>' . $totalQuantity . ' buah</strong></span>
+                </div>
+                <div class="total-row final">
+                    <span>💰 TOTAL PEMBAYARAN:</span>
+                    <span>Rp ' . number_format($order['total_amount'], 0, ',', '.') . '</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="invoice-footer">
+            <p><strong>📄 Invoice ini digenerate secara otomatis pada ' . $printDate . '</strong></p>
+            <p>Terima kasih atas kepercayaan Anda berbelanja di ' . htmlspecialchars($company['name']) . '</p>
+            <p>Jika ada pertanyaan mengenai invoice ini, silakan hubungi customer service kami</p>
+        </div>
+    </div>
+</body>
+</html>';
+
+        return $html;
+    }
+
+    // NEW: Download Invoice as PDF using basic HTML to PDF conversion
+    public function downloadInvoicePDF($orderId)
+    {
+        if (!session()->get('isLoggedIn')) {
+            return redirect()->to('/auth/login');
+        }
+
+        $userId = session()->get('id');
+        
+        if (!$orderId || !is_numeric($orderId)) {
+            session()->setFlashdata('error', 'ID pesanan tidak valid');
+            return redirect()->to('/user/orders');
+        }
+
+        // Validasi order
+        $orderQuery = $this->db->query("SELECT o.*, u.username, u.fullname, u.email, u.address, pm.name as payment_method_name, pm.account_info
+                                       FROM orders o 
+                                       JOIN users u ON u.id = o.user_id 
+                                       LEFT JOIN payment_methods pm ON pm.id = o.payment_method
+                                       WHERE o.id = ? AND o.user_id = ?", [$orderId, $userId]);
+        $order = $orderQuery->getRowArray();
+
+        if (!$order) {
+            session()->setFlashdata('error', 'Pesanan tidak ditemukan');
+            return redirect()->to('/user/orders');
+        }
+
+        // Get order items
+        $itemsSql = "SELECT oi.*, b.title, b.author, b.isbn, b.cover_image 
+                    FROM order_items oi 
+                    JOIN books b ON b.id = oi.book_id 
+                    WHERE oi.order_id = ?
+                    ORDER BY oi.id";
+        $itemsQuery = $this->db->query($itemsSql, [$orderId]);
+        $order['items'] = $itemsQuery->getResultArray();
+
+        // Calculate totals
+        $order['total_quantity'] = array_sum(array_column($order['items'], 'quantity'));
+        $order['subtotal'] = array_sum(array_map(function($item) {
+            return $item['price'] * $item['quantity'];
+        }, $order['items']));
+
+        // Generate HTML yang optimized untuk PDF
+        $html = $this->generatePDFOptimizedHTML($order);
+
+        // Set headers untuk download sebagai HTML yang bisa di-save as PDF
+        $filename = 'Invoice_' . $order['order_number'] . '_' . date('Y-m-d') . '_PDF.html';
+        
+        return $this->response
+            ->setHeader('Content-Type', 'text/html; charset=utf-8')
+            ->setHeader('Content-Disposition', 'attachment; filename="' . $filename . '"')
+            ->setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+            ->setHeader('Pragma', 'no-cache')
+            ->setHeader('Expires', '0')
+            ->setBody($html);
+    }
+
+    // Helper method untuk generate HTML yang dioptimasi untuk PDF
+    private function generatePDFOptimizedHTML($order)
+    {
+        // Menggunakan HTML yang sama tapi dengan print styling yang lebih baik
+        $html = $this->generateInvoiceHTML($order);
+        
+        // Tambahkan CSS khusus untuk PDF/Print
+        $pdfCSS = '
+        <style>
+            @page {
+                margin: 1cm;
+                size: A4;
+            }
+            
+            body {
+                background: white !important;
+                padding: 0 !important;
+            }
+            
+            .invoice-container {
+                box-shadow: none !important;
+                border: 1px solid #333 !important;
+                max-width: none !important;
+                margin: 0 !important;
+            }
+            
+            .invoice-header {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .items-table th {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .invoice-footer {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        </style>';
+        
+        // Insert CSS sebelum closing </head>
+        $html = str_replace('</head>', $pdfCSS . '</head>', $html);
+        
+        // Tambahkan script untuk auto print
+        $printScript = '
+        <script>
+            window.onload = function() {
+                // Auto focus untuk memudahkan print
+                window.focus();
+                
+                // Pesan untuk user
+                if (confirm("File berhasil didownload! Apakah Anda ingin langsung mencetak dokumen ini?")) {
+                    window.print();
+                }
+            };
+        </script>';
+        
+        $html = str_replace('</body>', $printScript . '</body>', $html);
+        
+        return $html;
+    }
+
+    // NEW: Method untuk direct print (tanpa download)
+    public function directPrint($orderId)
+    {
+        if (!session()->get('isLoggedIn')) {
+            return redirect()->to('/auth/login');
+        }
+
+        $userId = session()->get('id');
+
+        if (!$orderId || !is_numeric($orderId)) {
+            session()->setFlashdata('error', 'ID pesanan tidak valid');
+            return redirect()->to('/user/orders');
+        }
+
+        try {
+            // Get order data (sama seperti printInvoice)
+            $orderSql = "SELECT o.*, u.username, u.fullname, u.email, u.address, pm.name as payment_method_name, pm.account_info
+                         FROM orders o 
+                         JOIN users u ON u.id = o.user_id 
+                         LEFT JOIN payment_methods pm ON pm.id = o.payment_method
+                         WHERE o.id = ? AND o.user_id = ?";
+            $orderQuery = $this->db->query($orderSql, [$orderId, $userId]);
+            $order = $orderQuery->getRowArray();
+
+            if (!$order) {
+                session()->setFlashdata('error', 'Pesanan tidak ditemukan');
+                return redirect()->to('/user/orders');
+            }
+
+            // Get order items
+            $itemsSql = "SELECT oi.*, b.title, b.author, b.isbn, b.cover_image 
+                        FROM order_items oi 
+                        JOIN books b ON b.id = oi.book_id 
+                        WHERE oi.order_id = ?
+                        ORDER BY oi.id";
+            $itemsQuery = $this->db->query($itemsSql, [$orderId]);
+            $order['items'] = $itemsQuery->getResultArray();
+
+            // Generate HTML dengan auto print script
+            $html = $this->generateInvoiceHTML($order);
+            
+            // Tambahkan auto print script
+            $printScript = '
+            <script>
+                window.onload = function() {
+                    window.print();
+                    
+                    // Redirect kembali setelah print dialog ditutup
+                    window.onafterprint = function() {
+                        window.history.back();
+                    };
+                };
+            </script>';
+            
+            $html = str_replace('</body>', $printScript . '</body>', $html);
+            
+            return $this->response
+                ->setHeader('Content-Type', 'text/html; charset=utf-8')
+                ->setBody($html);
+
+        } catch (\Exception $e) {
+            log_message('error', 'directPrint exception: ' . $e->getMessage());
+            session()->setFlashdata('error', 'Terjadi kesalahan sistem');
+            return redirect()->to('/user/orders');
+        }
+    }
+
+    // Method untuk profil user
     public function profile()
     {
         // Pastikan user sudah login
@@ -952,427 +1691,5 @@ class User extends BaseController
                 'message' => 'Terjadi kesalahan sistem'
             ]);
         }
-    }
-
-public function printInvoice($orderId)
-    {
-        if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/auth/login');
-        }
-
-        $userId = session()->get('id');
-
-        if (!$orderId || !is_numeric($orderId)) {
-            session()->setFlashdata('error', 'ID pesanan tidak valid');
-            return redirect()->to('/user/orders');
-        }
-
-        try {
-            // Get order dengan query langsung
-            $orderSql = "SELECT o.*, u.username, u.fullname, u.email, u.address, pm.name as payment_method_name, pm.account_info
-                         FROM orders o 
-                         JOIN users u ON u.id = o.user_id 
-                         LEFT JOIN payment_methods pm ON pm.id = o.payment_method
-                         WHERE o.id = ? AND o.user_id = ?";
-            $orderQuery = $this->db->query($orderSql, [$orderId, $userId]);
-            $order = $orderQuery->getRowArray();
-
-            if (!$order) {
-                session()->setFlashdata('error', 'Pesanan tidak ditemukan');
-                return redirect()->to('/user/orders');
-            }
-
-            // Get order items
-            $itemsSql = "SELECT oi.*, b.title, b.author, b.isbn, b.cover_image 
-                        FROM order_items oi 
-                        JOIN books b ON b.id = oi.book_id 
-                        WHERE oi.order_id = ?
-                        ORDER BY oi.id";
-            $itemsQuery = $this->db->query($itemsSql, [$orderId]);
-            $order['items'] = $itemsQuery->getResultArray();
-
-            // Calculate totals
-            $order['total_quantity'] = array_sum(array_column($order['items'], 'quantity'));
-            $order['subtotal'] = array_sum(array_map(function($item) {
-                return $item['price'] * $item['quantity'];
-            }, $order['items']));
-
-            // Format dates
-            $order['formatted_created_date'] = date('d F Y, H:i', strtotime($order['created_at']));
-            $order['formatted_print_date'] = date('d F Y, H:i');
-
-            // Get status text
-            $statusMap = [
-                'pending_payment' => 'Menunggu Pembayaran',
-                'pending_verification' => 'Menunggu Verifikasi',
-                'approved' => 'Disetujui',
-                'on_shipping' => 'Sedang Dikirim',
-                'completed' => 'Selesai',
-                'cancelled' => 'Dibatalkan'
-            ];
-            $order['status_text'] = $statusMap[$order['status']] ?? ucfirst($order['status']);
-
-            // Company info
-            $company = [
-                'name' => 'Toko Buku Online',
-                'address' => 'Jl. Raya Bookstore No. 123, Jakarta Selatan 12345',
-                'phone' => '(021) 1234-5678',
-                'email' => 'info@tokubuku.com',
-                'website' => 'www.tokobuku.com'
-            ];
-
-            $data = [
-                'title' => 'Invoice - ' . $order['order_number'],
-                'order' => $order,
-                'company' => $company
-            ];
-
-            // Return view khusus untuk print (tanpa layout navbar/footer)
-            return view('user/print_invoice', $data);
-
-        } catch (\Exception $e) {
-            log_message('error', 'printInvoice exception: ' . $e->getMessage());
-            session()->setFlashdata('error', 'Terjadi kesalahan sistem');
-            return redirect()->to('/user/orders');
-        }
-    }
-
-    // Method untuk download invoice sebagai file
-    public function downloadInvoice($orderId)
-    {
-        if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/auth/login');
-        }
-
-        $userId = session()->get('id');
-
-        if (!$orderId || !is_numeric($orderId)) {
-            session()->setFlashdata('error', 'ID pesanan tidak valid');
-            return redirect()->to('/user/orders');
-        }
-
-        try {
-            // Get order dengan query langsung
-            $orderSql = "SELECT o.*, u.username, u.fullname, u.email, u.address, pm.name as payment_method_name, pm.account_info
-                         FROM orders o 
-                         JOIN users u ON u.id = o.user_id 
-                         LEFT JOIN payment_methods pm ON pm.id = o.payment_method
-                         WHERE o.id = ? AND o.user_id = ?";
-            $orderQuery = $this->db->query($orderSql, [$orderId, $userId]);
-            $order = $orderQuery->getRowArray();
-
-            if (!$order) {
-                session()->setFlashdata('error', 'Pesanan tidak ditemukan');
-                return redirect()->to('/user/orders');
-            }
-
-            // Get order items
-            $itemsSql = "SELECT oi.*, b.title, b.author, b.isbn, b.cover_image 
-                        FROM order_items oi 
-                        JOIN books b ON b.id = oi.book_id 
-                        WHERE oi.order_id = ?
-                        ORDER BY oi.id";
-            $itemsQuery = $this->db->query($itemsSql, [$orderId]);
-            $order['items'] = $itemsQuery->getResultArray();
-
-            // Calculate totals
-            $order['total_quantity'] = array_sum(array_column($order['items'], 'quantity'));
-            $order['subtotal'] = array_sum(array_map(function($item) {
-                return $item['price'] * $item['quantity'];
-            }, $order['items']));
-
-            // Generate HTML content for download
-            $html = $this->generateInvoiceHTML($order);
-
-            // Set headers untuk download
-            $filename = 'Invoice_' . $order['order_number'] . '_' . date('Y-m-d') . '.html';
-            
-            return $this->response
-                ->setHeader('Content-Type', 'text/html')
-                ->setHeader('Content-Disposition', 'attachment; filename="' . $filename . '"')
-                ->setBody($html);
-
-        } catch (\Exception $e) {
-            log_message('error', 'downloadInvoice exception: ' . $e->getMessage());
-            session()->setFlashdata('error', 'Terjadi kesalahan sistem');
-            return redirect()->to('/user/orders');
-        }
-    }
-
-    // Helper method untuk generate HTML invoice
-    private function generateInvoiceHTML($order)
-    {
-        // Company info
-        $company = [
-            'name' => 'Toko Buku Online',
-            'address' => 'Jl. Raya Bookstore No. 123, Jakarta Selatan 12345',
-            'phone' => '(021) 1234-5678',
-            'email' => 'info@tokubuku.com',
-            'website' => 'www.tokobuku.com'
-        ];
-
-        // Format dates
-        $createdDate = date('d F Y, H:i', strtotime($order['created_at']));
-        $printDate = date('d F Y, H:i');
-
-        // Status text
-        $statusMap = [
-            'pending_payment' => 'Menunggu Pembayaran',
-            'pending_verification' => 'Menunggu Verifikasi',
-            'approved' => 'Disetujui',
-            'on_shipping' => 'Sedang Dikirim',
-            'completed' => 'Selesai',
-            'cancelled' => 'Dibatalkan'
-        ];
-        $statusText = $statusMap[$order['status']] ?? ucfirst($order['status']);
-
-        $html = '<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice - ' . htmlspecialchars($order['order_number']) . '</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-        .invoice-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .invoice-header {
-            background: #f8f9fa;
-            padding: 20px;
-            border-bottom: 2px solid #dee2e6;
-        }
-        .company-info {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .company-name {
-            font-size: 24px;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-        .company-details {
-            font-size: 12px;
-            color: #6c757d;
-            line-height: 1.4;
-        }
-        .invoice-title {
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            color: #495057;
-            margin: 20px 0;
-        }
-        .invoice-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        .info-section {
-            flex: 1;
-        }
-        .info-section h4 {
-            margin: 0 0 10px 0;
-            color: #495057;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .info-section p {
-            margin: 2px 0;
-            font-size: 12px;
-            line-height: 1.4;
-        }
-        .invoice-body {
-            padding: 20px;
-        }
-        .items-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        .items-table th,
-        .items-table td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #dee2e6;
-            font-size: 12px;
-        }
-        .items-table th {
-            background: #f8f9fa;
-            font-weight: bold;
-            color: #495057;
-        }
-        .text-right {
-            text-align: right;
-        }
-        .text-center {
-            text-align: center;
-        }
-        .total-section {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 2px solid #dee2e6;
-        }
-        .total-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
-        .total-row.final {
-            font-weight: bold;
-            font-size: 16px;
-            color: #28a745;
-            padding-top: 10px;
-            border-top: 1px solid #dee2e6;
-        }
-        .invoice-footer {
-            background: #f8f9fa;
-            padding: 15px 20px;
-            border-top: 1px solid #dee2e6;
-            text-align: center;
-            font-size: 11px;
-            color: #6c757d;
-        }
-        .status-badge {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .status-pending { background: #fff3cd; color: #856404; }
-        .status-approved { background: #d4edda; color: #155724; }
-        .status-shipping { background: #cce5ff; color: #004085; }
-        .status-completed { background: #d1ecf1; color: #0c5460; }
-        .status-cancelled { background: #f8d7da; color: #721c24; }
-    </style>
-</head>
-<body>
-    <div class="invoice-container">
-        <div class="invoice-header">
-            <div class="company-info">
-                <div class="company-name">' . htmlspecialchars($company['name']) . '</div>
-                <div class="company-details">
-                    ' . htmlspecialchars($company['address']) . '<br>
-                    Tel: ' . htmlspecialchars($company['phone']) . ' | Email: ' . htmlspecialchars($company['email']) . '<br>
-                    Website: ' . htmlspecialchars($company['website']) . '
-                </div>
-            </div>
-            
-            <div class="invoice-title">INVOICE</div>
-            
-            <div class="invoice-info">
-                <div class="info-section">
-                    <h4>Informasi Pesanan</h4>
-                    <p><strong>No. Pesanan:</strong> ' . htmlspecialchars($order['order_number']) . '</p>
-                    <p><strong>Tanggal Pesanan:</strong> ' . $createdDate . '</p>
-                    <p><strong>Status:</strong> <span class="status-badge status-' . $order['status'] . '">' . $statusText . '</span></p>
-                </div>
-                <div class="info-section">
-                    <h4>Informasi Pelanggan</h4>
-                    <p><strong>Nama:</strong> ' . htmlspecialchars($order['fullname'] ?: $order['username']) . '</p>
-                    <p><strong>Email:</strong> ' . htmlspecialchars($order['email']) . '</p>
-                    <p><strong>Username:</strong> ' . htmlspecialchars($order['username']) . '</p>
-                    ' . ($order['address'] ? '<p><strong>Alamat:</strong> ' . htmlspecialchars($order['address']) . '</p>' : '') . '
-                </div>
-            </div>
-        </div>
-
-        <div class="invoice-body">
-            <table class="items-table">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Buku</th>
-                        <th>Penulis</th>
-                        <th>ISBN</th>
-                        <th class="text-center">Qty</th>
-                        <th class="text-right">Harga</th>
-                        <th class="text-right">Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody>';
-
-        $no = 1;
-        foreach ($order['items'] as $item) {
-            $subtotal = $item['price'] * $item['quantity'];
-            $html .= '
-                    <tr>
-                        <td>' . $no++ . '</td>
-                        <td>' . htmlspecialchars($item['title']) . '</td>
-                        <td>' . htmlspecialchars($item['author']) . '</td>
-                        <td>' . htmlspecialchars($item['isbn']) . '</td>
-                        <td class="text-center">' . $item['quantity'] . '</td>
-                        <td class="text-right">Rp ' . number_format($item['price'], 0, ',', '.') . '</td>
-                        <td class="text-right">Rp ' . number_format($subtotal, 0, ',', '.') . '</td>
-                    </tr>';
-        }
-
-        $html .= '
-                </tbody>
-            </table>
-
-            <div class="total-section">
-                <div class="total-row">
-                    <span>Total Item:</span>
-                    <span>' . count($order['items']) . ' item(s)</span>
-                </div>
-                <div class="total-row">
-                    <span>Total Quantity:</span>
-                    <span>' . array_sum(array_column($order['items'], 'quantity')) . '</span>
-                </div>
-                <div class="total-row final">
-                    <span>TOTAL PEMBAYARAN:</span>
-                    <span>Rp ' . number_format($order['total_amount'], 0, ',', '.') . '</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="invoice-footer">
-            <p>Invoice ini digenerate secara otomatis pada ' . $printDate . '</p>
-            <p>Terima kasih atas kepercayaan Anda berbelanja di ' . htmlspecialchars($company['name']) . '</p>
-        </div>
-    </div>
-</body>
-</html>';
-
-        return $html;
-    }
-
-    // Method untuk generate PDF (menggunakan library seperti TCPDF atau DOMPDF)
-    public function downloadInvoicePDF($orderId)
-    {
-        if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/auth/login');
-        }
-
-        $userId = session()->get('id');
-        
-        // Validasi order
-        $orderQuery = $this->db->query("SELECT * FROM orders WHERE id = ? AND user_id = ?", [$orderId, $userId]);
-        $order = $orderQuery->getRowArray();
-
-        if (!$order) {
-            session()->setFlashdata('error', 'Pesanan tidak ditemukan');
-            return redirect()->to('/user/orders');
-        }
-
-        // TODO: Implementasi PDF generation
-        // Untuk saat ini, redirect ke download HTML
-        session()->setFlashdata('info', 'Fitur download PDF sedang dalam pengembangan. Silakan gunakan download HTML atau print untuk sementara.');
-        return redirect()->to('/user/downloadInvoice/' . $orderId);
     }
 }
